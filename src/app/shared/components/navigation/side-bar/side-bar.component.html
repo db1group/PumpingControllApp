@@ -1,0 +1,28 @@
+<nav class="h-full w-full fixed">
+  <mat-drawer-container class="h-full">
+    <mat-drawer  class="flex min-w-[5rem] items-center !bg-pumping-900" mode="side" opened>
+      <div class="h-full flex flex-col">
+        <!-- v placeholder, change logo v -->
+        <div class="aspect-square w-full border-b flex justify-center items-center pl-1 pt-1 border-pumping-700">
+          <img class="w-12 aspect-square" src="/assets/icons/temporario logo.svg" alt="image">
+        </div>
+        <!-- ^ placeholder, change logo ^ -->
+        <ul class="flex-grow flex flex-col relative">
+          <span #indicator class="absolute left-0 w-1 h-[3rem] bg-pumping-secondary"></span>
+          <div *ngFor="let item of data" >
+            <li class="flex w-full h-12 items-center justify-center mt-8">
+              <pumping-nav-button [route]="item.routeLink" [iconClass]="item.icon"/>
+            </li>
+          </div>
+          <li class="flex w-full items-end justify-center mb-8 flex-grow">
+            <pumping-nav-button [iconClass]="'bi bi-box-arrow-left'"/>
+          </li>
+        </ul>
+      </div>
+    </mat-drawer>
+    <mat-drawer-content class="pumping-gradient">
+      <ng-content></ng-content>
+    </mat-drawer-content>
+  </mat-drawer-container>
+</nav>
+
