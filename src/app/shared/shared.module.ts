@@ -1,21 +1,30 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { MatIconModule } from '@angular/material/icon';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatSidenavModule } from '@angular/material/sidenav';
+
+import { NavigationModule } from './components/navigation/navigation.module';
+import { NotFoundComponent } from './components/not-found/not-found.component';
+import { PageHeadComponent } from './components/page-head/page-head.component';
+import { MatTableModule } from '@angular/material/table';
+import { ReactiveFormsModule } from '@angular/forms';
+
+const components = [
+  NotFoundComponent,
+  PageHeadComponent
+]
 
 const modules = [
-  MatIconModule,
   CommonModule,
-  MatToolbarModule,
-  MatSidenavModule,
+  NavigationModule,
+  MatTableModule,
+  ReactiveFormsModule,
 ];
 
 @NgModule({
   declarations: [
+    ...components,
   ],
   imports: [...modules],
-  exports: [...modules],
+  exports: [...modules, ...components],
 })
 export class SharedModule {}

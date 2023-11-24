@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 
-import { SharedModule } from '../../shared.module';
 import { NavButtonComponent } from './nav-button.component';
 import { RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [NavButtonComponent],
   imports: [
-    SharedModule,
+    CommonModule,
     RouterModule
   ],
   exports: [NavButtonComponent]

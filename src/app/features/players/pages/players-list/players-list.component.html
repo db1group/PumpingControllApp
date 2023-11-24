@@ -1,1 +1,7 @@
-<p>players</p>
+<div class="flex justify-between m:flex-col">
+  <div class="-translate-y-5 m:-translate-y-0">
+    <pumping-page-head page="players"/>
+    <pumping-players-table [players]="players" [selectedRows]="clickedRows" (select)="handleSelection($event)"/>
+  </div>
+    <pumping-player-manager [selectedPlayers]="clickedRows" (unselect)="handleSelection($event)" (clear)="resetClickedPlayers()"/>
+</div>

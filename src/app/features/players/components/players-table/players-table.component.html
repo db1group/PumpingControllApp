@@ -1,0 +1,72 @@
+<div class="m:!max-w-[100vw] md:!w-[52vw] pt-[7.4rem]">
+  <table mat-table [dataSource]="dataSource" class="!bg-[transparent] !border-separate">
+    <ng-container matColumnDef="index">
+      <th mat-header-cell *matHeaderCellDef class="w-1 !font-normal !text-xs !rounded-l-xl m:hidden">
+        <input
+          #input
+          (keyup)="applyFilter($event)"
+          placeholder="Find Player..."
+          class="w-32 outline-none bg-[transparent] placeholder:text-pumping-100 placeholder:text-opacity-50"
+        />
+      </th>
+      <td mat-cell *matCellDef="let player" class="!rounded-l-xl  m:hidden">
+        <div class="flex items-center justify-between">
+          <div class="min-w-[2rem] flex items-center justify-center rounded-lg border aspect-square bg-pumping-700 border-pumping-primary !overflow-visible">
+            <i 
+              [ngClass]="selectedRows.includes(player) ? '!-translate-x-16' : ''"
+              class="bi bi-pencil-square absolute text-pumping-secondary transition-all duration-500 -z-20 text-base"
+            ></i>
+            <span class="text-pumping-secondary">
+              {{ player.index }}
+            </span>
+          </div>
+          <div class="w-12 h-12 rounded-xl border border-pumping-700 bg-pumping-primary"></div>
+        </div>
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef>Name</th>
+      <td 
+        mat-cell 
+        *matCellDef="let player"
+        [ngClass]="selectedRows.includes(player) ? 'text-pumping-100' : 'text-pumping-primary'"
+        class="!font-bold !text-base truncate !max-w-[15rem] m:!max-w-[30vw]">
+        {{ player.name }}
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="nation">
+      <th mat-header-cell *matHeaderCellDef>nation</th>
+      <td mat-cell *matCellDef="let player">Nation's name</td>
+    </ng-container>
+    <ng-container matColumnDef="unit">
+      <th mat-header-cell *matHeaderCellDef>unit</th>
+      <td mat-cell *matCellDef="let player">{{ player.businessUnit }}</td>
+    </ng-container>
+    <ng-container matColumnDef="points">
+      <th mat-header-cell *matHeaderCellDef class="!rounded-r-xl">points</th>
+      <td mat-cell *matCellDef="let player" class="!rounded-r-xl !font-bold !text-base w-1">
+        <div class="bg-pumping-primary w-[4rem] md:min-w-[9rem] rounded-lg h-8 flex items-center justify-center">
+          <p class="truncate">{{ player.balance }} <span class="m:hidden">Points</span></p>
+        </div>
+      </td>
+    </ng-container>
+    <tr
+      mat-header-row
+      *matHeaderRowDef="displayedColumns"
+      class="!h-[3.25rem] !text-pumping-100 !bg-gradient-to-r !font-bold uppercase !rounded-xl relative contour after:rounded-xl"
+    ></tr>
+    <tr
+      mat-row
+      *matRowDef="let row; columns: displayedColumns"
+      (click)="selectRow(row)"
+      [ngClass]="selectedRows.includes(row) ? 'lg:!translate-x-4 scale-100 !bg-pumping-primary' : ''"
+      class="!bg-pumping-700 !text-pumping-100 !text-xs !h-16 !capitalize transition-all cursor-pointer animated-row scale-0"
+    ></tr>
+  </table>
+  <mat-paginator
+    (page)="pageHandler()"
+    [pageSize]="10"
+    showFirstLastButtons
+    class="!bg-[transparent] !text-pumping-primary !text-xs">
+  </mat-paginator>
+</div>

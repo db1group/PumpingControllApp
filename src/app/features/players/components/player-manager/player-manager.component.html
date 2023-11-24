@@ -1,0 +1,23 @@
+<div class="mt-[6rem] font-bold text-pumping-100 md:max-w-[23vw]">
+  <div class="h-[3.25rem] pumping-gradient-inverted rounded-xl flex items-center justify-between p-4 contour relative after:rounded-xl mb-4">
+    <p><span class="text-pumping-primary">MANAGE</span> PLAYERS</p>
+    <button 
+      (click)="clearPlayers()"
+      class="text-[0.625rem] text-pumping-secondary !font-normal border border-pumping-secondary px-[0.625rem] rounded-md hover:bg-pumping-secondary hover:text-pumping-900">
+      CLEAR
+    </button>
+  </div>
+  <pumping-score-manager (updateBalance)="updatePlayers($event)" [hasPlayersSelected]="selectedPlayers!.length > 0"/>
+  <div class="w-full p-3 space-y-1 rounded-b-xl bg-pumping-700 min-h-[3.5rem] h-[24rem]">
+    <div
+      *ngFor="let player of selectedPlayers"
+      class="bg-pumping-700 cursor-pointer rounded-lg pl-4 h-12 contour relative after:rounded-lg flex items-center justify-between"
+      (click)="unselectPlayer(player)"
+    >
+      <span class="max-w-[75%] truncate text-xs text-pumping-100">
+        {{ player.name }}
+      </span>
+      <span class="mr-2 p-1 rounded-lg flex items-center justify-center bi bi-dash"></span>
+    </div>
+  </div>
+</div>

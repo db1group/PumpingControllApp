@@ -2,23 +2,66 @@
 @tailwind components;
 @tailwind utilities;
 
-body, html {
+body,
+html {
   height: 100%;
 }
 
-body {
+* {
   margin: 0;
   font-family: "Space Mono", monospace;
 }
 
 @layer components {
   .pumping-gradient {
-    @apply bg-gradient-to-r from-pumping-700 to-pumping-900
+    @apply bg-gradient-to-r from-pumping-700 to-pumping-900 to-90%;
+  }
+  .pumping-gradient-inverted {
+    @apply bg-gradient-to-r to-pumping-900 from-pumping-700 to-60%;
+  }
+  .pumping-btn-hover {
+    @apply transition-all duration-1000 hover:duration-300 hover:text-pumping-700 ease-in-out hover:bg-pumping-primary;
   }
 }
 
-@layer components {
-  .pumping-btn-hover {
-      @apply transition-all duration-1000 hover:duration-300 hover:text-pumping-700 ease-in-out hover:bg-pumping-primary
-  }
+.contour::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  border: 1px solid rgba(248, 248, 248, 0.2);
+  mask-image: linear-gradient(90deg, transparent, black);
+  pointer-events: none;
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: #202021;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #E30076;
+  border-radius: 1000px;
+}
+
+body{
+  scrollbar-color: #E30076 #202021;
+  scrollbar-width: thin;
+}
+
+*::-webkit-inner-spin-button { 
+  -webkit-appearance: none;
+}
+
+.mat-mdc-paginator-icon {
+  fill: #E30076 !important;
+}
+
+.mat-mdc-paginator-page-size {
+  display: none !important;
 }

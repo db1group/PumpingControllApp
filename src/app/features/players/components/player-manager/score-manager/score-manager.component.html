@@ -1,0 +1,28 @@
+<form [formGroup]="scoreForm">
+  <div class="contour relative after:rounded-xl flex mb-4">
+    <input
+      placeholder="Amount Of Points..."
+      type="number"
+      min="0"
+      oninput="validity.valid||(value='');"
+      formControlName="Amount"
+      class="h-[3.25rem] pumping-gradient rounded-xl placeholder:font-normal placeholder:text-xs p-4 pr-0 outline-none text-pumping-primary"
+    />
+    <select
+      name="operation"
+      formControlName="Action"
+      class="w-full outline-none rounded-r-xl text-center bg-gradient-to-r from-pumping-900 to-pumping-700 "
+    >
+      <option [value]="0" class="text-pumping-100 bg-pumping-900 font-bold">ADD</option>
+      <option [value]="1" class="text-pumping-100 bg-pumping-900 font-bold">SUBTRACT</option>
+      <option [value]="2" class="text-pumping-100 bg-pumping-900 font-bold">UPDATE</option>
+    </select>
+  </div>
+  <button
+    [disabled]="amount?.invalid == true || hasPlayersSelected == false"
+    (click)="updateHandler()"
+    class="flex items-center justify-center border-b border-b-pumping-900 h-[3.25rem] bg-pumping-primary duration-300 transition-all ease-in-out delay-800 disabled:bg-pumping-700 text-pumping-100 disabled:text-opacity-20 w-full rounded-t-xl"
+  >
+    APPLY
+  </button>
+</form>

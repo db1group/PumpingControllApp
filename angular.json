@@ -64,7 +64,8 @@
               "browserTarget": "PumpingControllApp:build:production"
             },
             "development": {
-              "browserTarget": "PumpingControllApp:build:development"
+              "browserTarget": "PumpingControllApp:build:development",
+              "proxyConfig": "src/proxy.conf.json"
             }
           },
           "defaultConfiguration": "development"

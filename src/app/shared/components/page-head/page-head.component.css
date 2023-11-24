@@ -1,0 +1,4 @@
+.head {
+    text-shadow: 1px 1px 0 rgba(248, 248, 248, 10%), 1px -1px 0 rgba(248, 248, 248, 10%), -1px 1px 0 rgba(248, 248, 248, 10%), -1px -1px 0 rgba(248, 248, 248, 10%), 1px 0px 0 rgba(248, 248, 248, 10%), 0px 1px 0 rgba(248, 248, 248, 10%), -1px 0px 0 rgba(248, 248, 248, 10%), 0px -1px 0 rgba(248, 248, 248, 10%);
+    mask-image: linear-gradient(90deg, black, transparent 60%);
+}

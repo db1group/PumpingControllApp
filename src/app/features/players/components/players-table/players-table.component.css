@@ -1,0 +1,11 @@
+.mat-mdc-table {
+  border-spacing: 0 0.5rem;
+}
+
+.mat-mdc-header-cell {
+  background: unset !important;
+}
+
+.mat-mdc-header-row {
+  transform: translateY(-0.75rem) !important;
+}
